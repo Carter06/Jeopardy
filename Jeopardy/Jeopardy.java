@@ -86,32 +86,26 @@ public class Jeopardy implements ActionListener {
 	 */
 	
 	private JButton createButton(String dollarAmount) {
-		// Create a new JButton
 		JButton button = new JButton();
-		// Set the text of the button to the dollarAmount
 		button.setText(dollarAmount);
-		// Increment the buttonCount (this should make the layout vertical)
 		buttonCount++;
-		// Return your new button instead of the temporary button
-		
 		return button;
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
 		// Remove this temporary message:
-		JOptionPane.showMessageDialog(null,"pressed " + ((JButton)arg0.getSource()).getText() + " button");
 
 		// Use the method that plays the jeopardy theme music.
-
+		playJeopardyTheme();
 		JButton buttonPressed = (JButton) arg0.getSource();
 		// If the buttonPressed was the firstButton
-		
+		if(buttonPressed.equals(firstButton) {
 			// Call the askQuestion() method
-			
+			askQuestion();
 			// Fill in the askQuestion() method. When you play the game, the score should change.
-		
+		}
 		// Or if the buttonPressed was the secondButton
-
+		
 
 			// Call the askQuestionRecipe with a harder question
 			
@@ -122,25 +116,26 @@ public class Jeopardy implements ActionListener {
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
 		// Remove this temporary message
-		JOptionPane.showMessageDialog(null, "this is where the question will be asked");
 		// Use a pop up to ask the user the question
-	
+		String answer = JOptionPane.showInputDialog(question);
 		// If the answer is correct
-		
+		if(answer.equals(correctAnswer)) {
 			// Increase the score by the prizeMoney
-			
+			score+=prizeMoney();
 			// Call the updateScore() method
-			
+			updateScore();
 			// Pop up a message to tell the user they were correct
-			
+			JOptionPane.showMessageDialog(null, "You are correct");
+		}	
 		// Otherwise
-		
+		else{
 			// Decrement the score by the prizeMoney
-			
+			score-=prizeMoney;
 			// Pop up a message to tell the user the correct answer
-			
+			JOptionPane.showMessageDialog(null, "That was incorrect.  The correct answer is " + correctAnswer + ".");
 			// Call the updateScore() method
-			
+			updateScore();
+		}	
 		
 	}
 
